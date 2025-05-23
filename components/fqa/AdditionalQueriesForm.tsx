@@ -15,9 +15,15 @@ export default function AdditionalQueriesForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+//    Built-in validation 
+    if (!form.checkValidity()) {
+      form.reportValidity();          
+      return;                         
+    }
+
     setSubmitted(true);
-    // Clears all inputs in an uncontrolled way
-    e.currentTarget.reset();
+    form.reset();                  
   };
 
   return (
